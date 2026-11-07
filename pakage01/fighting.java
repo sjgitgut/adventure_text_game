@@ -1,9 +1,9 @@
 package pakage01;
 import javax.swing.Timer;
 
-public class fighting {
-    public player player1;
-    public monster monster1;
+class fighting {
+    player player1;
+    monster monster1;
     Timer timer;
     ui u;
     int monsterkilled;
@@ -11,12 +11,12 @@ public class fighting {
     String playerdeathtext="you have been killed by the monster";
     boolean monsterlost = false;
 
-    public void getready(player player1, monster monster1){
+    void getready(player player1, monster monster1){
         this.player1 = player1;
         this.monster1=monster1;
     }
 
-    public void fight(){
+    void fight(){
         if(monster1.health<0){
             u.text_area.setText(monsterdeathtext); 
             monsterkilled ++;   

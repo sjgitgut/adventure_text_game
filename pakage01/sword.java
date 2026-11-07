@@ -1,9 +1,9 @@
 package pakage01;
 
-public class sword extends weapons{
-    public int id = 101;
-    public String name = "sword";
-    public int damage = 10;
-
-
+class sword extends weapon {
+    sword() {
+        id = 101;
+        name = "sword";
+        damage = 10;
+    }
 }

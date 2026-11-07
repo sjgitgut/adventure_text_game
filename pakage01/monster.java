@@ -1,12 +1,16 @@
 package pakage01;
 
-import java.util.Random;
+class monster {
+    private final Game game;
 
-public class monster {
-    public int health= 50;
-    public int attack(){
-        Random rand = new Random();
-        int damage = rand.nextInt(1,21);
+    monster(Game game) {
+        this.game = game;
+    }
+
+    int health= 50;
+
+    int attack(){
+        int damage = game.rand.nextInt(1,21);
         return damage;
     }
 

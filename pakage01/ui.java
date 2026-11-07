@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ui {
+class ui {
     JFrame frame;
     JPanel panel, startpanel, choicepanel, mosterhealthpanel;
     JLabel titlelabel,monsterhealthlabel,playerhealthLabel; 
@@ -16,7 +16,7 @@ public class ui {
     shop shop1;
     Game game;
     choicehandler ch = new choicehandler();
-    public ui(){
+    ui(){
         
         frame = new JFrame("Game");
         frame.setBounds(300,150,900,600);
@@ -55,13 +55,13 @@ public class ui {
 
         frame.setVisible(true);
     }
-    public void setstory(story s, shop shop1, Game game){
+    void setstory(story s, shop shop1, Game game){
         this.s =s;
         this.shop1 = shop1;
         this.game= game;
 
     }
-    public void startgame(){
+    void startgame(){
         startbutton.setVisible(false);
         titlelabel.setVisible(false);
         startpanel.setBounds(200,320,400,230);
@@ -112,7 +112,7 @@ public class ui {
         showstats();
         s.guard();
     }
-    public void showstats(){
+    void showstats(){
         playerhealthLabel = new JLabel();
         playerhealthLabel.setBounds(30,10,800,70);
         playerhealthLabel.setForeground(Color.white);
@@ -121,131 +121,130 @@ public class ui {
         
     }
     
-    public class choicehandler implements ActionListener {
+    class choicehandler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
             String click = arg0.getActionCommand();
 
             switch (click) {
-                case "startbutt": startgame();
-                    
-                    break;
-                case "butt1": switch(s.position){
-                    case "guard": s.talktoguard();
-                        break;
-                    case "talktoguard": s.guard();
-                        break;
-                    case "telltheguard": s.guard();
-                        break;
-                    case "towncenter": s.shop();
-                        break;
-                    case "shop": game.player1.addweapons(shop1.buysword());
-                        break;
-                    case "outside": s.forest();
-                        break;
-                    case "forest": s.exploringforest();
-                    if(game.monster==0){
-                        game.monster++;
-                        game.mons=game.createmonster();
-                        game.fight1 = new fighting();
-                    }
-                        break;
-                    case "exploringforest": 
-                    game.player1.useitem(103);
-                    if(game.fight1.monsterlost==true){
-                        game.monster=0;
-                        s.forest();
-                    }
-                    
-                    game.fight1.getready(game.player1, game.mons);
-                    game.fight1.fight();
+                case "startbutt" -> {
+                    startgame();
+                }
+                case "butt1" -> {
+                    switch (s.position) {
+                        case "guard" -> {
+                            s.talktoguard();
+                        }
+                        case "talktoguard" -> {
+                            s.guard();
+                        }
+                        case "telltheguard" -> {
+                            s.guard();
+                        }
+                        case "towncenter" -> {
+                            s.shop();
+                        }
+                        case "shop" -> {
+                            game.player1.addweapons(shop1.buysword());
+                        }
+                        case "outside" -> {
+                            s.forest();
+                        }
+                        case "forest" -> {
+                            s.exploringforest();
+                            if (game.monster == 0) {
+                                game.monster++;
+                                game.mons = game.createmonster();
+                                game.fight1 = new fighting();
+                            }
+                        }
+                        case "exploringforest" -> {
+                            game.player1.useitem(103);
+                            if (game.fight1.monsterlost == true) {
+                                game.monster = 0;
+                                s.forest();
+                            }
 
-
-                        break;
-
-                };
-                    
-                    break;
-                case "butt2": switch(s.position){
-                    case "guard": s.telltheguard();
-                        break;
-                    
-                    case "towncenter": s.outside();
-                        break;
-                    
-                    case "shop": game.player1.addpotion(shop1.potion());
-                        break;
-                    
-                    case "outside": s.towncenter();
-                        break;
-                    case "forest": s.towncenter();
-                        break;
-                    
-                    case "exploringforest": game.player1.useitem(103);
-                    if(game.fight1.monsterlost==true){
-                        game.monster=0;
-                        s.forest();
+                            game.fight1.getready(game.player1, game.mons);
+                            game.fight1.fight();
+                        }
                     }
-                    game.fight1.getready(game.player1, game.mons);
-                    game.fight1.fight();
-
-                        break;
-                };
-                    
-                    break;
-            
-                case "butt3": switch(s.position){
-                    case "guard": s.towncenter();
-                        break;
-                    
-                    
-                    case "towncenter": s.guard();
-                        break;
-                    
-                    case "shop": s.towncenter();
-                        break;
-                    
-                    
-                    case "exploringforest": game.player1.useitem(102);
-                    if(game.fight1.monsterlost==true){
-                        game.monster=0;
-                        s.forest();
+                    ;
+                }
+                case "butt2" -> {
+                    switch (s.position) {
+                        case "guard" -> {
+                            s.telltheguard();
+                        }
+                        case "towncenter" -> {
+                            s.outside();
+                        }
+                        case "shop" -> {
+                            game.player1.addpotion(shop1.potion());
+                        }
+                        case "outside" -> {
+                            s.towncenter();
+                        }
+                        case "forest" -> {
+                            s.towncenter();
+                        }
+                        case "exploringforest" -> {
+                            game.player1.useitem(103);
+                            if (game.fight1.monsterlost == true) {
+                                game.monster = 0;
+                                s.forest();
+                            }
+                            game.fight1.getready(game.player1, game.mons);
+                            game.fight1.fight();
+                        }
                     }
-                    game.fight1.getready(game.player1, game.mons);
-                    game.fight1.fight();
-                        break;
-                };
-                    
-                    break;
-            
-                case "butt4": switch(s.position){
-                    case "guard":
-                        break;
-                    
-                    case "talktoguard":
-                        break;
-                    
-                    case "telltheguard":
-                        break;
-                    
-                    case "towncenter":
-                        break;
-                    
-                    case "shop":
-                        break;
-                    
-                    case "outside":
-                        break;
-                    
-                    case "exploringforest":
-                        break;
-                };
-                    
-                    break;
-            
-                default:
-                    break;
+                    ;
+                }
+                case "butt3" -> {
+                    switch (s.position) {
+                        case "guard" -> {
+                            s.towncenter();
+                        }
+                        case "towncenter" -> {
+                            s.guard();
+                        }
+                        case "shop" -> {
+                            s.towncenter();
+                        }
+                        case "exploringforest" -> {
+                            game.player1.useitem(102);
+                            if (game.fight1.monsterlost == true) {
+                                game.monster = 0;
+                                s.forest();
+                            }
+                            game.fight1.getready(game.player1, game.mons);
+                            game.fight1.fight();
+                        }
+                    }
+                    ;
+                }
+                case "butt4" -> {
+                    switch (s.position) {
+                        case "guard" -> {
+                        }
+                        case "talktoguard" -> {
+                        }
+                        case "telltheguard" -> {
+                        }
+                        case "towncenter" -> {
+                        }
+                        case "shop" -> {
+                        }
+                        case "outside" -> {
+                        }
+                        case "exploringforest" -> {
+                        }
+                    }
+                    ;
+                }
+                default -> {
+                }
             }
         }
     

@@ -1,26 +1,27 @@
 package pakage01;
 
-public class Game {
+import java.util.Random;
+
+class Game {
     ui u = new ui();
-    story s = new story(u);
-    player player1 =new player();
-    shop shop1 = new shop();
+    story s = new story(this);
+    player player1 =new player(this);
+    shop shop1 = new shop(this);
     knife knife1 = new knife();
     int monster=0;
     monster mons;
     fighting fight1;
-    public static void main(String[] args) {
+    Random rand = new Random();
+
+    static void main(String[] args) {
         new Game();
     }
-    public Game(){
+    Game(){
         u.setstory(s,shop1,this);
-        shop1.giveplayer(player1);
         player1.addweapons(knife1);
-
-
     }
-    public monster createmonster(){
-        return new monster();
+    monster createmonster(){
+        return new monster(this);
     }
 
 }
