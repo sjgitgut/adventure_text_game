@@ -5,7 +5,7 @@ public class shop {
     public String name = "shop";
 
     public weapons buysword(){
-        player1.gold -= 15;
+        player1.gold -=15;
         return new sword();
     }
     

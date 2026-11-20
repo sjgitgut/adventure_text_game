@@ -32,7 +32,7 @@ public class story {
     }
     public void towncenter(){
         position="towncenter";
-        u.text_area.setText("you are not at theh town center, you can go to the market or outside the town.");
+        u.text_area.setText("you are now at the town center, you can go to the market or outside the town.");
         u.button1.setText("go to shop");
         u.button2.setText("go outside the town");
         u.button3.setText("go to mansiongate");
@@ -67,7 +67,7 @@ public class story {
         u.text_area.setText("you encountered a monster. he wants to fight\n what do you do?");
         u.button1.setText("knife attack");
         u.button2.setText("long sword attack");
-        u.button3.setText("potion");
+        u.button3.setText("potion: " + u.game.player1.potcount);
         u.button4.setText("leave");    
     }
 

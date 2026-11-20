@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class monster {
     public int health= 50;
+    Random rand = new Random();
     public int attack(){
-        Random rand = new Random();
         int damage = rand.nextInt(1,21);
         return damage;
     }

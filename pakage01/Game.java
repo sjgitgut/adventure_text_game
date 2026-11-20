@@ -13,6 +13,7 @@ public class Game {
         new Game();
     }
     public Game(){
+        u.frame.setVisible(true);
         u.setstory(s,shop1,this);
         shop1.giveplayer(player1);
         player1.addweapons(knife1);

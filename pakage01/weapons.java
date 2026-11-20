@@ -5,5 +5,9 @@ public class weapons {
     public String name;
     public int damage;
 
+    public void use(player player1){
+
+    }
+
 }
 
